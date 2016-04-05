@@ -280,16 +280,22 @@
             </nav>
         </div>
         
+        <!-- Petit template pour le "head" -->
         <div class="container-fluid head">
-            <!-- Petit template pour le "head" -->
-            <div class="page-header">
-                <h1>
+            <div class="row inside-head">
+                <!-- Titre (logo) -->
+                <div class="col-md-5">
                     <img onclick="window.location='index.php?action=forum';" src="pic/logo.png" alt="Logo CommunityScriptProject" style="max-height: 150px" />
-                    <small>Slogan du site</small>
-                </h1>
+                </div>
+                <!-- Slogan -->
+                <div class="col-md-3">
+                    <h1>
+                        <small>Slogan du site</small>
+                    </h1>
+                </div>
             </div>
             <!-- OL qui contient le "chemin actuel" -->
-            <ol class="breadcrumb">
+            <ol class="breadcrumb top-head">
                 <li><a href="#">First link</a></li>
                 <li><a href="#">Second link</a></li>
                 <li><a href="#">Third link</a></li>
@@ -299,7 +305,7 @@
         
         <!-- Le content qui change serait situé dans cette partie -->
         <!-- Présence d'un id en plus de la class pour faciliter la modification via JS -->
-        <div class="container-fluid" id="main-container">
+        <div class="container-fluid main-div" id="main-container">
             <!-- Pas faire attention, ici je mets plein de petits tests -->
             
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal</button>

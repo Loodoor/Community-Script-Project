@@ -1,3 +1,22 @@
 ﻿div.head {
     background-color: #ccc;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+div.inside-head {
+    padding-bottom: 10px;
+}
+
+ol.top-head {
+    margin: 0px;
+    background-color: #fff;
+    border-radius: 0px;
+    width: 100%;
+    border-top-style: solid;
+    border-top-color: #46b;
+}
+
+div.main-div {
+    background-color: #eee;
 }
