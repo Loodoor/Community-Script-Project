@@ -1,0 +1,67 @@
+Interprétation du lien d'accès à CSP
+====================================
+
+Le lien d'accès à CSP suivera toujours une logique assez simple : action => données relatives
+
+Voici les différentes actions avec les données qui doivent/peuvent être transmises
+* action non définie ou action=index
+  * Affichage de l'index du site de CSP avec les news et le tralala
+
+* action=forum
+  * Affichage de l'index du forum
+  * forum=catid
+    * Affichage plus spécifique où seul la catégorie concernée est chargée
+    * newmessages (présence de la variable)
+      * Affiche uniquement les nouveaux messages du forum concernée
+  * newmessages (présence de la variable)
+    * Affiche uniquement les nouveaux message sur le forum
+
+* action=notifications
+  * Affiche un rapport détaillé des notifications (citations/réponses/messagesperso/avertissement)
+  * notifications=quotes
+    * Affiche uniquement les citations
+  * notifications=replies
+    * Affiche uniquement les réponses
+  * notifications=personnalmessages
+    * Affiche uniquement les notifications relatives aux messages privés.
+  * notifications=warnings
+    * Affiche uniquement les avertissements
+
+_**Note** : Les notifications sont automatiquement chargées toute les 5 minutes (storage local: `date - last_notification > 3000s`)_
+
+* action=post
+  * category=catid
+    * Affiche l'interface de post d'un message dans une catégorie
+  * topic=tid
+    * Affiche l'interface de post dans un sujet
+  * message=mid
+    * Affiche l'interface d'édition d'un message
+
+* action=viewtopic&topic=tid
+  * Affiche un sujet
+  * start=page
+    * Affiche la bonne page du sujet (calculé en fonction du MessageNumber???)
+  * message=messageid
+    * Affiche principalement le message concerné (et calcule la page en fonction de ce paramètre)
+  * reports (présence)
+    * Affiche les messages rapportés aux modérateurs avec les détails
+
+* action=viewarticle&article=aid
+  * Affiche un article en fonction de son id
+  * viewcomments (présence)
+    * Affiche les commentaires (si l'article découle d'un sujet)
+
+* action=conversations
+  * Affiche l'interface des conversations (dernier message + liste)
+  * page=pagenumber
+    * Affiche la liste des conversations à la page pagenumber
+  * conversation=cid
+    * Affiche le contenu de la conversation cid
+    * reply (présence)
+      * Affiche l'interface de réponse à une conversation
+
+* action=chat
+  * Affiche le chat (si permi)
+
+- - -
+_**Petite note** : Système de citation : messageid, startphrase, endphrase (Pour éviter les manipulations) => Empêcher les messages d'être fondamentalement modifiés (unité de sens)_
