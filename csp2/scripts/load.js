@@ -19,6 +19,7 @@
 // Variables globales
 //---
 var CSP_Body = {};
+var CSP_Content = {};
 var CSP_CopyRights = {};
 var CSP_Logo = {};
 var CSP_UserSettings = {};
@@ -226,6 +227,24 @@ function create_breadcumb()
 function generate_content()
 {
     var url = extract_url_params();
+    
+    if (url.has('action'))
+    {
+        var page = qsd("div");
+        
+        if (url.get('action') == "forum")
+        {}
+        if (url.get('action') == "post")
+        {}
+        if (url.get('action') == "viewtopic")
+        {}
+        if (url.get('action') == "viewarticle")
+        {}
+        if (url.get('action') == "chat")
+        {}
+        
+        CSP_Content.appendChild(page);
+    }
 }
 
 //---
@@ -233,6 +252,7 @@ function generate_content()
 //---
 document.body.onload = function() {
     CSP_Body = dce("body");
+    CSP_Content = dce("main-container");
     CSP_CopyRights = dce("copyrights");
     CSP_Logo = dce("logo");
     CSP_CurPath = dce("breadcumb-cur-path");
