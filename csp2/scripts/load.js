@@ -11,6 +11,7 @@
 //   load_script
 //   extract_url_params
 //   set_as_active
+//   create_breadcumb
 //--
 
 //---
@@ -48,26 +49,17 @@ function set_as_active(id)
     }
 }
 
-//---
-// Fonction de déclenchement du chargement de CSP
-//---
-document.body.onload = function() {
-    CSP_Body = dce("body");
-    CSP_CopyRights = dce("copyrights");
-    CSP_Logo = dce("logo");
-    CSP_CurPath = dce("breadcumb-cur-path");
-    
-    if (!load_settings())
-        return;
-    
+//--
+// create_breadcumb : Créer le breadcumb (son contenu) avec le chemin actuel
+//--
+function create_breadcumb()
+{
     var array_current_path = extract_url_params();
     var objet = qsd("li");
     objet.innerHTML = "<a href='index.php?action=accueil'>Accueil</a>";
     if (array_current_path.size == 1 || array_current_path.size == 0)
         objet.setAttribute("class", "active");
     CSP_CurPath.appendChild(objet);
-    
-    console.log(array_current_path);
     
     if (array_current_path.has("action") && array_current_path.get("action") === "forum")
     {
@@ -216,6 +208,21 @@ document.body.onload = function() {
             CSP_CurPath.setAttribute("class", "active");
         }
     }
+}
+
+//---
+// Fonction de déclenchement du chargement de CSP
+//---
+document.body.onload = function() {
+    CSP_Body = dce("body");
+    CSP_CopyRights = dce("copyrights");
+    CSP_Logo = dce("logo");
+    CSP_CurPath = dce("breadcumb-cur-path");
+    
+    if (!load_settings())
+        return;
+    
+    create_breadcumb();
 };
 
 //---
@@ -228,8 +235,6 @@ function extract_url_params() {
     
     if (t)
     {
-        console.log('okey');
-        
         for (var i=0; i < t.length; i++)
         {
             var s = t[i].split(';');
@@ -251,11 +256,9 @@ function extract_url_params() {
                     f.set("variables") = last;
                 }
             }
-            console.log(f);
         }
-        console.log('end');
     }
-    console.log(f);
+    
     return f;
 }
 
