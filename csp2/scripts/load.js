@@ -12,6 +12,7 @@
 //   extract_url_params
 //   set_as_active
 //   create_breadcumb
+//   generate_content <- En cours
 //--
 
 //---
@@ -208,6 +209,23 @@ function create_breadcumb()
             CSP_CurPath.setAttribute("class", "active");
         }
     }
+    else if (array_current_path.has("action") && array_current_path.get("action") === "search")
+    {
+        set_as_active("accueil");
+        
+        objet2 = qsd("li");
+        objet2.innerHTML = "<a>Recherche</a>";
+        objet2.setAttribute("class", "active");
+        CSP_CurPath.appendChild(objet2);
+    }
+}
+
+//--
+// generate_content : Génère une vue
+//--
+function generate_content()
+{
+    var url = extract_url_params();
 }
 
 //---
@@ -223,6 +241,8 @@ document.body.onload = function() {
         return;
     
     create_breadcumb();
+    
+    generate_content();
 };
 
 //---

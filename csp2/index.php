@@ -48,7 +48,7 @@
                             <li id="navbar-accueil-lnk"><a href="index.php">Accueil</a></li>
                             <li id="navbar-forum-lnk"><a href="index.php?action=forum">Forum</a></li>
                             <li class="dropdown" id="navbar-starters-kit-dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Starters-Kits <span class="caret"></span></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Starters-Kits <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="index.php?action=starters-kits&v=1">Pokémon Script Project 0.7</a></li>
                                     <li><a href="index.php?action=starters-kits&v=2">Pokémon Script Project 4G+</a></li>
@@ -140,6 +140,7 @@
         </div>
         
         <!-- Gestion des pages -->
+        <!--
         <nav>
             <ul class="pagination">
                 <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -151,6 +152,7 @@
                 <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
             </ul>
         </nav>
+        -->
         
         <?php include('footer.php'); ?>
     </body>
