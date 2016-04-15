@@ -67,7 +67,9 @@ document.body.onload = function() {
         objet.setAttribute("class", "active");
     CSP_CurPath.appendChild(objet);
     
-    if (array_current_path.has("forum"))
+    console.log(array_current_path);
+    
+    if (array_current_path.has("action") && array_current_path.get("action") === "forum")
     {
         set_as_active("forum");
         
@@ -96,7 +98,7 @@ document.body.onload = function() {
             CSP_CurPath.appendChild(objet3);
         }
     }
-    else if (array_current_path.has("post"))
+    else if (array_current_path.has("action") && array_current_path.get("action") === "post")
     {
         set_as_active("forum");
         
@@ -114,7 +116,7 @@ document.body.onload = function() {
         objet3.setAttribute("class", "active");
         CSP_CurPath.appendChild(objet3);
     }
-    else if (array_current_path.has("viewtopic"))
+    else if (array_current_path.has("action") && array_current_path.get("action") === "viewtopic")
     {
         set_as_active("forum");
         
@@ -143,11 +145,11 @@ document.body.onload = function() {
             CSP_CurPath.appendChild(objet5);
         }
     }
-    else if (array_current_path.has("accueil") || array_current_path.size == 0)
+    else if (array_current_path.has("action") && array_current_path.get("action") === "accueil" || array_current_path.size == 0)
     {
         set_as_active("accueil");
     }
-    else if (array_current_path.has("viewarticle"))
+    else if (array_current_path.has("action") && array_current_path.get("action") === "viewarticle")
     {
         set_as_active("accueil");
         
@@ -160,8 +162,8 @@ document.body.onload = function() {
         if (array_current_path.has("article"))
         {
             objet3 = qsd("li");
-            objet3.innerHTML = "<a href='index.php"+location.search+"'>Articles</a>";
-            if (!array_current_path.has("variables") && array_current_path.get("variables").indexOf("viewcomments") === -1)
+            objet3.innerHTML = "<a href='index.php"+location.search+"'>Nom de l'article ici</a>";
+            if (!array_current_path.has("variables"))
                 objet3.setAttribute("class", "active");
             CSP_CurPath.appendChild(objet3);
             
@@ -174,7 +176,7 @@ document.body.onload = function() {
             }
         }
     }
-    else if (array_current_path.has("chat"))
+    else if (array_current_path.has("action") && array_current_path.get("action") === "chat")
     {
         set_as_active("accueil");
         
@@ -182,7 +184,7 @@ document.body.onload = function() {
         objet2.innerHTML = "<a href='index.php?action=chat'>Chat</a>";
         CSP_CurPath.appendChild(objet2);
     }
-    else if (array_current_path.has("starters-kits"))
+    else if (array_current_path.has("action") && array_current_path.get("action") === "starters-kits")
     {
         set_as_active("starters-kits");
         
@@ -224,12 +226,15 @@ function extract_url_params() {
         f = new Map(),
         v = [];
     
-    if (t == true)
+    if (t)
     {
+        console.log('okey');
+        
         for (var i=0; i < t.length; i++)
         {
             var s = t[i].split(';');
             var x = t[i].split('=');
+            
             if (s != true)
                 f.set(x[0], x[1]);
             else
@@ -246,9 +251,11 @@ function extract_url_params() {
                     f.set("variables") = last;
                 }
             }
+            console.log(f);
         }
+        console.log('end');
     }
-    
+    console.log(f);
     return f;
 }
 
