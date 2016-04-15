@@ -35,40 +35,79 @@ document.body.onload = function() {
         return;
     
     var array_current_path = extract_url_params();
+    var objet = qsd("li");
+    objet.innerHTML = "<a href='index.php?action=accueil'>Accueil</a>";
     
     if (array_current_path.indexOf("forum") >= 0)
     {
         dce("navbar-forum-lnk").setAttribute("class", "active");
         dce("navbar-accueil-lnk").removeAttribute("class");
         dce("navbar-starters-kit-dropdown").removeAttribute("class");
+        
+        CSP_CurPath.appendChild(objet);
+        
+        objet2 = qsd("li");
+        objet2.innerHTML = "<a href='index.php?action=forum'>Forum</a>";
+        CSP_CurPath.appendChild(objet2);
+        
+        if (array_current_path.length > 1)
+        {
+            objet3 = qsd("li");
+            objet3.innerHTML = "<a href='index.php?action=forum&categorie'>Catégorie</a>";
+            if (array_current_path.length == 2)
+                objet3.setAttribute("class", "active");
+            CSP_CurPath.appendChild(objet3);
+            
+            if (array_current_path.length > 2)
+            {
+                objet4 = qsd("li");
+                objet4.innerHTML = "<a href='index.php?action=forum&categorie&topic'>Topic</a>";
+                if (array_current_path.length == 3)
+                    objet4.setAttribute("class", "active");
+                CSP_CurPath.appendChild(objet4);
+            }
+        }
     }
     else if (array_current_path.indexOf("accueil") >= 0 || array_current_path.length == 0)
     {
         dce("navbar-accueil-lnk").setAttribute("class", "active");
         dce("navbar-forum-lnk").removeAttribute("class");
         dce("navbar-starters-kit-dropdown").removeAttribute("class");
+        
+        if (array_current_path.length == 1 || array_current_path.length == 0)
+            objet.setAttribute("class", "active");
+        CSP_CurPath.appendChild(objet);
     }
-    else if (array_current_path.indexOf("starters-kit") >= 0)
+    else if (array_current_path.indexOf("starters-kits") >= 0)
     {
         dce("navbar-accueil-lnk").removeAttribute("class");
         dce("navbar-forum-lnk").removeAttribute("class");
         dce("navbar-starters-kit-dropdown").setAttribute("class", "active");
+        
+        CSP_CurPath.appendChild(objet);
+        
+        objet2 = qsd("li");
+        objet2.innerHTML = "<a href='index.php?action=starters-kits'>Starters-Kits</a>";
+        if (array_current_path.length == 1)
+            objet2.setAttribute("class", "active");
+        CSP_CurPath.appendChild(objet2);
+        
+        if (array_current_path.length > 1)
+        {
+            objet3 = qsd("li");
+            objet3.innerHTML = "<a href='index.php?action=starters-kits&sk1'>Starter-Kit n°1</a>";
+            if (array_current_path.length == 2)
+                objet3.setAttribute("class", "active");
+            CSP_CurPath.setAttribute("class", "active");
+        }
     }
-    
-    // faire les disjonctions de cas pour modifier le CSP_CurPath (breadcumb-cur-path)
 };
 
 //---
 // extract_url_params : Extrait les paramètres de l'url et les renvoie sous forme d'array
 //---
 function extract_url_params() {
-    var t = location.search.substring(8).split('&'),
-        f = [];
-    for (var i = 0; i < t.length; i++) {
-        if (t[i] == true)
-            f.push(t[i]);
-    }
-    return f;
+    return location.search.substring(8).split('&');
 }
 
 //---
