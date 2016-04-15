@@ -50,13 +50,13 @@
                             <li class="dropdown" id="navbar-starters-kit-dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Starters-Kits <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Pokémon Script Project 0.7</a></li>
-                                    <li><a href="#">Pokémon Script Project 4G+</a></li>
-                                    <li><a href="#">Pokémon Script Project DS</a></li>
+                                    <li><a href="index.php?action=starters-kits&v=1">Pokémon Script Project 0.7</a></li>
+                                    <li><a href="index.php?action=starters-kits&v=2">Pokémon Script Project 4G+</a></li>
+                                    <li><a href="index.php?action=starters-kits&v=3">Pokémon Script Project DS</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#">Pokémon SDK</a></li>
+                                    <li><a href="index.php?action=starters-kits&v=4">Pokémon SDK</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#">Donjon Mystère Ace - DMA</a></li>
+                                    <li><a href="index.php?action=starters-kits&v=5">Donjon Mystère Ace - DMA</a></li>
                               </ul>
                             </li>
                         </ul>
@@ -113,14 +113,7 @@
                 </div>
             </div>
             <!-- OL qui contient le "chemin actuel" -->
-            <ol class="breadcrumb top-head" id="breadcumb-cur-path">
-                <!--
-                <li><a href="#">First link</a></li>
-                <li><a href="#">Second link</a></li>
-                <li><a href="#">Third link</a></li>
-                <li class="active"><a href="#">Active Page</a></li>
-                -->
-            </ol>
+            <ol class="breadcrumb top-head" id="breadcumb-cur-path"></ol>
         </div>
         
         <div class="col-sm-8" id="initial_content">

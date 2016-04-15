@@ -3,13 +3,14 @@
 // Contributeurs :
 // > Nuri Yuri
 // > Folaefolc :p
-//   document.body.onload
+//   document.body.onload <- En cours
 //   dce
 //   qsd
 //   load_settings <- En cours...
 //   load_modal
 //   load_script
 //   extract_url_params
+//   set_as_active
 //--
 
 //---
@@ -21,6 +22,31 @@ var CSP_Logo = {};
 var CSP_UserSettings = {};
 var CSP_CurPath = {};
 var BS_Types = ["default", "primary", "success", "info", "warning", "danger"];
+
+//--
+// set_as_active : Met en actif un élément de la main barre
+//--
+function set_as_active(id)
+{
+    if (id == "forum")
+    {
+        dce("navbar-forum-lnk").setAttribute("class", "active");
+        dce("navbar-accueil-lnk").removeAttribute("class");
+        dce("navbar-starters-kit-dropdown").removeAttribute("class");
+    }
+    else if (id == "accueil")
+    {
+        dce("navbar-accueil-lnk").setAttribute("class", "active");
+        dce("navbar-forum-lnk").removeAttribute("class");
+        dce("navbar-starters-kit-dropdown").removeAttribute("class");
+    }
+    else if (id == "starters-kits")
+    {
+        dce("navbar-accueil-lnk").removeAttribute("class");
+        dce("navbar-forum-lnk").removeAttribute("class");
+        dce("navbar-starters-kit-dropdown").setAttribute("class", "active");
+    }
+}
 
 //---
 // Fonction de déclenchement du chargement de CSP
@@ -37,66 +63,153 @@ document.body.onload = function() {
     var array_current_path = extract_url_params();
     var objet = qsd("li");
     objet.innerHTML = "<a href='index.php?action=accueil'>Accueil</a>";
+    if (array_current_path.size == 1 || array_current_path.size == 0)
+        objet.setAttribute("class", "active");
+    CSP_CurPath.appendChild(objet);
     
-    if (array_current_path.indexOf("forum") >= 0)
+    if (array_current_path.has("forum"))
     {
-        dce("navbar-forum-lnk").setAttribute("class", "active");
-        dce("navbar-accueil-lnk").removeAttribute("class");
-        dce("navbar-starters-kit-dropdown").removeAttribute("class");
+        set_as_active("forum");
         
-        CSP_CurPath.appendChild(objet);
+        objet2 = qsd("li");
+        objet2.innerHTML = "<a href='index.php?action=forum'>Forum</a>";
+        if (array_current_path.size == 1)
+            objet2.setAttribute("class", "active");
+        CSP_CurPath.appendChild(objet2);
+        
+        if (array_current_path.size > 1)
+        {
+            objet3 = qsd("li");
+            
+            var categorie_name = "";
+            if (array_current_path.get('forum') == 0)
+                categorie_name = "Catégorie 1";
+            if (array_current_path.get('forum') == 1)
+                categorie_name = "Catégorie 2";
+            if (array_current_path.get('forum') == 2)
+                categorie_name = "Catégorie 3";
+            if (array_current_path.get('forum') == 3)
+                categorie_name = "Catégorie 4";
+            
+            objet3.innerHTML = "<a href='index.php?action=forum&forum="+array_current_path.get('forum')+"'>"+categorie_name+"</a>";
+            objet3.setAttribute("class", "active");
+            CSP_CurPath.appendChild(objet3);
+        }
+    }
+    else if (array_current_path.has("post"))
+    {
+        set_as_active("forum");
         
         objet2 = qsd("li");
         objet2.innerHTML = "<a href='index.php?action=forum'>Forum</a>";
         CSP_CurPath.appendChild(objet2);
         
-        if (array_current_path.length > 1)
+        objet3 = qsd("li");
+        if (array_current_path.has("message"))
+            objet3.innerHTML = "<a href='index.php"+location.search+"'>Editer un message</a>";
+        if (array_current_path.has("topic"))
+            objet3.innerHTML = "<a href='index.php"+location.search+"'>Poster une réponse</a>";
+        if (array_current_path.has("category"))
+            objet3.innerHTML = "<a href='index.php"+location.search+"'>Créer un nouveau topic</a>";
+        objet3.setAttribute("class", "active");
+        CSP_CurPath.appendChild(objet3);
+    }
+    else if (array_current_path.has("viewtopic"))
+    {
+        set_as_active("forum");
+        
+        objet2 = qsd("li");
+        objet2.innerHTML = "<a href='index.php?action=forum'>Forum</a>";
+        CSP_CurPath.appendChild(objet2);
+        
+        objet3 = qsd("li");
+        objet3.innerHTML = "<a href='index.php?action=viewtopic&topic="+array_current_path.get("topic")+"'>Nom du topic ici</a>";
+        if (!array_current_path.has("message"))
+            objet3.setAttribute("class", "active");
+        CSP_CurPath.appendChild(objet3);
+        
+        if (array_current_path.has("message"))
+        {
+            objet4 = qsd("li");
+            objet4.innerHTML = "<a href='index.php"+location.search+"'>Message de pseudo ici</a>";
+            objet4.setAttribute("class", "active");
+            CSP_CurPath.append(objet4);
+        }
+        if (array_current_path.has("variables") && array_current_path.get("variables").indexOf("reports") > -1)
+        {
+            objet5 = qsd("li");
+            objet5.innerHTML = "<a href='index.php"+location.search+"'>Messages reportés sur ce topic</a>";
+            objet5.setAttribute("class", "active");
+            CSP_CurPath.appendChild(objet5);
+        }
+    }
+    else if (array_current_path.has("accueil") || array_current_path.size == 0)
+    {
+        set_as_active("accueil");
+    }
+    else if (array_current_path.has("viewarticle"))
+    {
+        set_as_active("accueil");
+        
+        objet2 = qsd("li");
+        objet2.innerHTML = "<a href='index.php?action=viewarticle'>Articles</a>";
+        if (!array_current_path.has("article"))
+            objet2.setAttribute("class", "active");
+        CSP_CurPath.appendChild(objet2);
+        
+        if (array_current_path.has("article"))
         {
             objet3 = qsd("li");
-            objet3.innerHTML = "<a href='index.php?action=forum&categorie'>Catégorie</a>";
-            if (array_current_path.length == 2)
+            objet3.innerHTML = "<a href='index.php"+location.search+"'>Articles</a>";
+            if (!array_current_path.has("variables") && array_current_path.get("variables").indexOf("viewcomments") === -1)
                 objet3.setAttribute("class", "active");
             CSP_CurPath.appendChild(objet3);
             
-            if (array_current_path.length > 2)
+            if (array_current_path.has("variables") && array_current_path.get("variables").indexOf("viewcomments") > -1)
             {
                 objet4 = qsd("li");
-                objet4.innerHTML = "<a href='index.php?action=forum&categorie&topic'>Topic</a>";
-                if (array_current_path.length == 3)
-                    objet4.setAttribute("class", "active");
+                objet4.innerHTML = "<a href='index.php"+location.search+"'>Commentaire de l'article</a>";
+                objet4.setAttribute("class", "active");
                 CSP_CurPath.appendChild(objet4);
             }
         }
     }
-    else if (array_current_path.indexOf("accueil") >= 0 || array_current_path.length == 0)
+    else if (array_current_path.has("chat"))
     {
-        dce("navbar-accueil-lnk").setAttribute("class", "active");
-        dce("navbar-forum-lnk").removeAttribute("class");
-        dce("navbar-starters-kit-dropdown").removeAttribute("class");
+        set_as_active("accueil");
         
-        if (array_current_path.length == 1 || array_current_path.length == 0)
-            objet.setAttribute("class", "active");
-        CSP_CurPath.appendChild(objet);
+        objet2 = qsd("li");
+        objet2.innerHTML = "<a href='index.php?action=chat'>Chat</a>";
+        CSP_CurPath.appendChild(objet2);
     }
-    else if (array_current_path.indexOf("starters-kits") >= 0)
+    else if (array_current_path.has("starters-kits"))
     {
-        dce("navbar-accueil-lnk").removeAttribute("class");
-        dce("navbar-forum-lnk").removeAttribute("class");
-        dce("navbar-starters-kit-dropdown").setAttribute("class", "active");
-        
-        CSP_CurPath.appendChild(objet);
+        set_as_active("starters-kits");
         
         objet2 = qsd("li");
         objet2.innerHTML = "<a href='index.php?action=starters-kits'>Starters-Kits</a>";
-        if (array_current_path.length == 1)
+        if (array_current_path.size == 1)
             objet2.setAttribute("class", "active");
         CSP_CurPath.appendChild(objet2);
         
-        if (array_current_path.length > 1)
+        if (array_current_path.size > 1)
         {
             objet3 = qsd("li");
-            objet3.innerHTML = "<a href='index.php?action=starters-kits&sk1'>Starter-Kit n°1</a>";
-            if (array_current_path.length == 2)
+            
+            var skname = "";
+            if (array_current_path.get('v') == 1)
+                skname = "Pokémon Script Project 0.7";
+            if (array_current_path.get('v') == 2)
+                skname = "Pokémon Script Project 4G+";
+            if (array_current_path.get('v') == 3)
+                skname = "Pokémon Script Project DS";
+            if (array_current_path.get('v') == 4)
+                skname = "Pokémon SDK";
+            if (array_current_path.get('v') == 5)
+                skname = "Donjon Mystère Ace - DMA";
+            
+            objet3.innerHTML = "<a href='index.php"+location.search+"'>"+skname+"</a>";
+            if (array_current_path.size == 2)
                 objet3.setAttribute("class", "active");
             CSP_CurPath.setAttribute("class", "active");
         }
@@ -107,7 +220,36 @@ document.body.onload = function() {
 // extract_url_params : Extrait les paramètres de l'url et les renvoie sous forme d'array
 //---
 function extract_url_params() {
-    return location.search.substring(8).split('&');
+    var t = location.search.substring(1).split('&'),
+        f = new Map(),
+        v = [];
+    
+    if (t == true)
+    {
+        for (var i=0; i < t.length; i++)
+        {
+            var s = t[i].split(';');
+            var x = t[i].split('=');
+            if (s != true)
+                f.set(x[0], x[1]);
+            else
+            {
+                if (!f.has("variables"))
+                {
+                    f.set("variables") = s;
+                }
+                else
+                {
+                    var last = f.get("variables");
+                    for (var k=0; k < s.length; k++)
+                        last.push(s[k]);
+                    f.set("variables") = last;
+                }
+            }
+        }
+    }
+    
+    return f;
 }
 
 //---
@@ -173,11 +315,11 @@ function load_modal(id)
 //---
 function load_script(script_name, onload) 
 {
-  var script = qsd("script");
-  script.src = script_name+".js"
-  script.type = "text/javascript";
-  script.onload = onload;
-  document.head.appendChild(script);
+    var script = qsd("script");
+    script.src = script_name+".js"
+    script.type = "text/javascript";
+    script.onload = onload;
+    document.head.appendChild(script);
 }
 
 //---
@@ -188,5 +330,4 @@ function dce(id) {return document.getElementById(id);}
 //---
 // qsd : raccourci de document.createElement()
 //---
-
 function qsd(type) {return document.createElement(type);}
