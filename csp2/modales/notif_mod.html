@@ -1,0 +1,54 @@
+﻿        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="notif_modLabel">Notifications</h4>
+                </div>
+                <div class="modal-body">
+                    <script type="text/javascript">
+                    $('#home a').click(function(e) {
+                        e.preventDefault()
+                        $(this).tab('show')
+                    })
+
+                    $('#profile a').click(function(e) {
+                        e.preventDefault()
+                        $(this).tab('show')
+                    })
+
+                    $('#messages a').click(function(e) {
+                        e.preventDefault()
+                        $(this).tab('show')
+                    })
+                    </script>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                    </ul>
+                    
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home" aria-labelledby="home-tab">
+                            <p>
+                                Home tab ! :)
+                            </p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile" aria-labelledby="profile-tab">
+                            <p>
+                                Salut toi ! Ca va bien ? C'est cool alors :D
+                            </p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages" aria-labelledby="messages-tab">
+                            <p>
+                                Pas de nouveaux messages !
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>

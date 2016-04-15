@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </head>
   <body>
-	<script src="load.js"></script>
+    <script src="load.js"></script>
     <div class="container-fluid" id="body">
     <img class="img-responsive center-block" id="logo" src="/Images/__f_logo.png"/>
     <div class="col-sm-2"></div>
