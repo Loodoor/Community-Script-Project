@@ -4,6 +4,7 @@
 // > Nuri Yuri
 //   document.body.onload
 //   dce
+//   qsd
 //   load_settings <- En cours...
 //   load_modal
 //   load_script
@@ -16,7 +17,7 @@ var CSP_Body = {};
 var CSP_CopyRights = {};
 var CSP_Logo = {};
 var CSP_UserSettings = {};
-var BS_Types = ["default", "primary", "success", "info","warning","danger"];
+var BS_Types = ["default", "primary", "success", "info", "warning", "danger"];
 
 //---
 // Fonction de déclenchement du chargement de CSP
@@ -62,7 +63,7 @@ function load_modal(id)
   request.onreadystatechange = function() {
     if(request.readyState == 4 && request.status == 200) 
     {
-      el = document.createElement("div");
+      el = qsd("div");
       el.id = id;
       el.setAttribute("role","dialog");
       el.setAttribute("class","modal fade");
@@ -79,12 +80,19 @@ function load_modal(id)
 //---
 function load_script(script_name, onload) 
 {
-  var script = document.createElement("script");
+  var script = qsd("script");
   script.src = script_name+".js"
   script.onload = onload;
   document.head.appendChild(script);
 }
+
 //---
 // dce : raccourci de document.getElementById()
 //---
 function dce(id) {return document.getElementById(id);}
+
+//---
+// qsd : raccourci de document.createElement()
+//---
+
+function qsd(type) {return document.createElement(type);}
