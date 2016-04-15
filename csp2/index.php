@@ -28,8 +28,6 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Bootstrap JS Code -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <!-- Website JS Code -->
-        <script type="text/javascript" src="scripts/main.js"></script>
     </head>
     <body id="body">
         <script type="text/javascript" src="scripts/load.js"></script>
@@ -47,9 +45,9 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <!-- Premier menu (à voir pour en ajouter un si on est administrateur) -->
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.php">Accueil <span class="sr-only">(current)</span></a></li>
-                            <li><a href="index.php?action=forum">Forum</a></li>
-                            <li class="dropdown">
+                            <li id="navbar-accueil-lnk"><a href="index.php">Accueil</a></li>
+                            <li id="navbar-forum-lnk"><a href="index.php?action=forum">Forum</a></li>
+                            <li class="dropdown" id="navbar-starters-kit-dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Starters-Kits <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Pokémon Script Project 0.7</a></li>
@@ -101,7 +99,7 @@
         </div>
         
         <!-- Petit template pour le "head" -->
-        <div class="container-fluid head">
+        <div class="container-fluid head" id="home-made-head">
             <div class="row inside-head">
                 <!-- Titre (logo) -->
                 <div class="col-md-5">
@@ -115,11 +113,13 @@
                 </div>
             </div>
             <!-- OL qui contient le "chemin actuel" -->
-            <ol class="breadcrumb top-head">
+            <ol class="breadcrumb top-head" id="breadcumb-cur-path">
+                <!--
                 <li><a href="#">First link</a></li>
                 <li><a href="#">Second link</a></li>
                 <li><a href="#">Third link</a></li>
                 <li class="active"><a href="#">Active Page</a></li>
+                -->
             </ol>
         </div>
         
@@ -144,57 +144,20 @@
         <!-- Le content qui change serait situé dans cette partie -->
         <!-- Présence d'un id en plus de la class pour faciliter la modification via JS -->
         <div class="container-fluid main-div" id="main-container">
-            <!-- Pas faire attention, ici je mets plein de petits tests -->
-            
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal</button>
-            
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel">New message</h4>
-                        </div>
-                        
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="recipient-name" class="control-label">Recipient:</label>
-                                    <input type="text" class="form-control" id="recipient-name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="control-label">Message:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-primary">Send message</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
-            
-            <!-- Gestion des pages -->
-            <nav>
-                <ul class="pagination">
-                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                </ul>
-            </nav>
-            
-            <!-- Fin des tests -->
         </div>
+        
+        <!-- Gestion des pages -->
+        <nav>
+            <ul class="pagination">
+                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+            </ul>
+        </nav>
         
         <?php include('footer.php'); ?>
     </body>

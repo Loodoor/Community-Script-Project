@@ -11,7 +11,7 @@
 //---
 function display_panel(header, content, type, where)
 {
-    if(BS_Types.indexOf(type) < 0)
+    if(BS_Types.indexOf(type) === -1)
         type = BS_Types[0];
     
     var panel = document.createElement("div");
