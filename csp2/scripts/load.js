@@ -227,11 +227,10 @@ function create_breadcumb()
 function generate_content()
 {
     var url = extract_url_params();
+    var page = qsd("div");
     
     if (url.has('action'))
     {
-        var page = qsd("div");
-        
         if (url.get('action') == "forum")
         {}
         if (url.get('action') == "post")
@@ -242,9 +241,10 @@ function generate_content()
         {}
         if (url.get('action') == "chat")
         {}
-        
-        CSP_Content.appendChild(page);
     }
+    else if ((url.has('action') && url.get('action') == "accueil") || !url.has('action'))
+    {}
+    CSP_Content.appendChild(page);
 }
 
 //---
