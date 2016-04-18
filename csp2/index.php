@@ -22,7 +22,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <!-- Website Style -->
-        <link rel="stylesheet" href="style/design.css">
+        <link rel="stylesheet" href="assets/css/design.css">
         
         <!-- JQuery -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -30,7 +30,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     </head>
     <body id="body">
-        <script type="text/javascript" src="scripts/load.js"></script>
+        <script type="text/javascript" src="assets/js/load.js"></script>
         
         <!-- Main -->
         <div class="login-btn col-md-12">
@@ -38,7 +38,7 @@
                 <div class="container-fluid">
                     <!--
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.php" style="padding: 0px;"><img src="pic/logo.png" alt="Community Script Project" style="max-height: 50px;height: 50px;"/></a>
+                        <a class="navbar-brand" href="index.php" style="padding: 0px;"><img src="assets/img/logo.png" alt="Community Script Project" style="max-height: 50px;height: 50px;"/></a>
                     </div>
                     -->
                     
@@ -103,7 +103,7 @@
             <div class="row inside-head">
                 <!-- Titre (logo) -->
                 <div class="col-md-5">
-                    <img onclick="window.location='index.php?action=forum';" src="pic/logo.png" alt="Logo CommunityScriptProject" style="max-height: 150px" />
+                    <img onclick="window.location='index.php?action=forum';" src="assets/img/logo.png" alt="Logo CommunityScriptProject" style="max-height: 150px" />
                 </div>
                 <!-- Slogan -->
                 <div class="col-md-3">
