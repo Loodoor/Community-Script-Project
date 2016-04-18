@@ -8,7 +8,7 @@
 <html>
     <head>
         <title>CommunityScriptProject<?php echo " - " . $categorie; ?></title>
-        
+
         <!-- META -->
         <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,20 +18,14 @@
         <meta name="keywords" content="Community, Script, Project, Pokémon, SDK, Forum, Nuri Yuri, RPG Maker, Galerie, Projet, Prisme, Origins"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="author" content="" />
-        
+
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <!-- Website Style -->
         <link rel="stylesheet" href="assets/css/design.css">
-        
-        <!-- JQuery -->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- Bootstrap JS Code -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
     </head>
     <body id="body">
-        <script type="text/javascript" src="assets/js/load.js"></script>
-        
         <!-- Main -->
         <div class="login-btn col-md-12">
             <nav class="navbar navbar-inverse">
@@ -41,7 +35,7 @@
                         <a class="navbar-brand" href="index.php" style="padding: 0px;"><img src="assets/img/logo.png" alt="Community Script Project" style="max-height: 50px;height: 50px;"/></a>
                     </div>
                     -->
-                    
+
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <!-- Premier menu (à voir pour en ajouter un si on est administrateur) -->
                         <ul class="nav navbar-nav">
@@ -60,7 +54,7 @@
                               </ul>
                             </li>
                         </ul>
-                        
+
                         <!-- Recherche -->
                         <form class="navbar-form navbar-left" role="Recherche" action="index.php?action=search" method="get">
                             <div class="row">
@@ -72,7 +66,7 @@
                                 </div>
                             </div>
                         </form>
-                        
+
                         <!-- Menu pour l'utilisateur -->
                         <ul class="nav navbar-nav navbar-right">
                             <?php if (isset($_SESSION['pseudo'])): ?>
@@ -97,7 +91,7 @@
                 </div><!-- /.container-fluid -->
             </nav>
         </div>
-        
+
         <!-- Petit template pour le "head" -->
         <div class="container-fluid head" id="home-made-head">
             <div class="row inside-head">
@@ -115,7 +109,7 @@
             <!-- OL qui contient le "chemin actuel" -->
             <ol class="breadcrumb top-head" id="breadcumb-cur-path"></ol>
         </div>
-        
+
         <div class="col-sm-8" id="initial_content">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -133,12 +127,12 @@
                 </div>
             </noscript>
         </div>
-        
+
         <!-- Le content qui change serait situé dans cette partie -->
         <!-- Présence d'un id en plus de la class pour faciliter la modification via JS -->
         <div class="container-fluid main-div" id="main-container">
         </div>
-        
+
         <!-- Gestion des pages -->
         <nav>
             <ul class="pagination">
@@ -151,7 +145,34 @@
                 <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
             </ul>
         </nav>
-        
-        <?php include('footer.php'); ?>
+
+        <footer id="copyrights">
+          <div class="container">
+            <div class="row center">
+                <div class="social_icons col-lg-12">
+                  <a href="https://www.facebook.com/communityscriptproject">
+                    <img src="https://communityscriptproject.com/forum/Themes/Reseller/images/social_icons/facebook.png" alt="Facebook" />
+                  </a>
+                  <a href="https://twitter.com/CommuSP">
+                    <img src="https://communityscriptproject.com/forum/Themes/Reseller/images/social_icons/twitter.png" alt="Twitter" />
+                  </a>
+                </div>
+                <div class="col-lg-12">
+                  <a href="index.php?action=copyright#main_content_section">
+                    <span style="font-weight: bold;">&copy; Community Script Project</span> - Tous droits réservés
+                  </a>
+                  <br>
+                  <span class="smalltext">Il est interdit de copier le contenu de ce site sans l'autorisation du staff.</span>
+                </div>
+            </div>
+          </div>
+        </footer>
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Bootstrap JS Code -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <!-- CSP js -->
+        <script type="text/javascript" src="assets/js/load.js"></script>
     </body>
 </html>
