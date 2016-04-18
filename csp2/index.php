@@ -5,14 +5,13 @@
 
 <!DOCTYPE HTML>
 
-<html>
+<html lang="fr">
     <head>
         <title>CommunityScriptProject<?php echo " - " . $categorie; ?></title>
 
         <!-- META -->
         <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="Content-Language" content="fr-FR" />
         <meta name="robots" content="all" />
         <meta name="description" content="Site communautaire concentré sur la création vidéo ludique et artistique."/>
         <meta name="keywords" content="Community, Script, Project, Pokémon, SDK, Forum, Nuri Yuri, RPG Maker, Galerie, Projet, Prisme, Origins"/>
@@ -56,7 +55,7 @@
                         </ul>
 
                         <!-- Recherche -->
-                        <form class="navbar-form navbar-left" role="Recherche" action="index.php?action=search" method="get">
+                        <form class="navbar-form navbar-left" action="index.php?action=search" method="get">
                             <div class="row">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Rechercher" />
@@ -113,9 +112,9 @@
         <div class="col-sm-8" id="initial_content">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <center>
+                    <div class="center">
                         <strong>Chargement de CSP...</strong>
-                    </center>
+                    </div>
                 </div>
             </div>
             <!-- JIC le JS est pas activé -->
